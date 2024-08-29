@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from './pages/layouts/app';
 import { AuthLayout } from './pages/layouts/auth';
-import { Feedback } from './pages/app/feedback';
 import { Home } from './pages/app/home';
 import { SignIn } from './pages/auth/sign-in';
 import { useContext } from 'react';
@@ -11,9 +10,10 @@ import { NotFound } from './pages/error/NotFound';
 import { NotAuthorized } from './pages/error/NotAuthorized';
 import { InDevelopment } from './pages/error/InDevelopment';
 import { AdminLayout } from './pages/app/admin/layout';
-import { Test } from './pages/app/admin/home';
 import { Dash } from './pages/app/admin/dashboard';
 import { AdminSettings } from './pages/app/admin/settings';
+import { AdminProducts } from './pages/app/admin/products';
+import { AdminHome } from './pages/app/admin/home';
 
 export function Router() {
   const { loading, user } = useContext(AuthContext)
@@ -31,23 +31,22 @@ export function Router() {
         <Route path='' element={<SignIn />} />
       </Route>
 
-      <Route path='/feedback' element={<Feedback />} />
-
-      <Route path='/test' element={<AdminLayout />} >
-        <Route path='' element={<Test />} />
-        <Route path='dash' element={<Dash />} />
+      <Route path='/admin' element={<AdminLayout />} >
+        <Route path='' element={<AdminHome />} />
+        <Route path='dashboard' element={<Dash />} />
         <Route path='settings' element={<AdminSettings />} />
+        <Route path='products' element={<AdminProducts />} />
       </Route>
 
-      <Route 
+      {/* <Route 
         path='/admin' 
         element={
           <ProtectedRoute user={user} >
             <AdminLayout />
           </ProtectedRoute>
         }>
-        {/* <Route path='' element={<Admin />} /> */}
-      </Route>
+        <Route path='' element={<Admin />} />
+      </Route> */}
       
 
       <Route path='/401' element={<NotAuthorized />} />

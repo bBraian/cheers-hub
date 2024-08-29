@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/theme/theme-toggle"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -31,6 +32,7 @@ export function AdminSettings() {
             <Link to="#">Advanced</Link>
           </nav>
           <div className="grid gap-6">
+          <ThemeToggle />
             <Card x-chunk="dashboard-04-chunk-1">
               <CardHeader>
                 <CardTitle>Store Name</CardTitle>
